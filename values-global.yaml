@@ -43,14 +43,14 @@ regionalDR:
     clusters: # Pair of clusters, make sure to create each in a different region
       primary:
         name: ocp-primary
-        version: 4.14.12
+        version: 4.16.4
         # See OpenShift documentation for install config spec
         # https://docs.openshift.com/container-platform/4.14/installing/installing_aws/installing-aws-customizations.html
         install_config:
           apiVersion: v1
           metadata:
             name: ocp-primary
-          baseDomain: fsi-partner.rhecoeng.com
+          baseDomain: sandbox1959.opentlc.com
           controlPlane:
             name: master
             replicas: 3
@@ -58,7 +58,7 @@ regionalDR:
               aws:
                 type: m5.2xlarge
                 zones:
-                  - eu-central-1a
+                  - eu-west-2a
           compute:
             - name: worker
               replicas: 5
@@ -66,19 +66,19 @@ regionalDR:
                 aws:
                   type: m5.2xlarge
                   zones:
-                    - eu-central-1a
+                    - eu-west-2a
           networking:
             clusterNetwork:
               - cidr: 10.128.0.0/14
                 hostPrefix: 23
             machineNetwork:
               - cidr: 10.0.0.0/16
-            networkType: OpenShiftSDN
+            networkType: OVNKubernetes
             serviceNetwork:
               - 172.30.0.0/16
           platform:
             aws:
-              region: eu-central-1
+              region: eu-west-2
               userTags:
                 project: ValidatedPatterns
 
@@ -87,12 +87,12 @@ regionalDR:
           pullSecret: ""
       secondary:
         name: ocp-secondary
-        version: 4.14.12
+        version: 4.16.4
         install_config:
           apiVersion: v1
           metadata:
             name: ocp-secondary
-          baseDomain: fsi-partner.rhecoeng.com
+          baseDomain: sandbox1959.opentlc.com
           controlPlane:
             name: master
             replicas: 3
@@ -100,7 +100,7 @@ regionalDR:
               aws:
                 type: m5.2xlarge
                 zones:
-                  - us-west-2a
+                  - us-east-2a
           compute:
             - name: worker
               replicas: 5
@@ -108,19 +108,19 @@ regionalDR:
                 aws:
                   type: m5.2xlarge
                   zones:
-                    - us-west-2a
+                    - us-east-2a
           networking:
             clusterNetwork:
               - cidr: 10.132.0.0/14
                 hostPrefix: 23
             machineNetwork:
               - cidr: 10.1.0.0/16
-            networkType: OpenShiftSDN
+            networkType: OVNKubernetes
             serviceNetwork:
               - 172.31.0.0/16
           platform:
             aws:
-              region: us-west-2
+              region: us-east-2
               userTags:
                 project: ValidatedPatterns
 

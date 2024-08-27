@@ -43,7 +43,7 @@ global:
     region: us-west-1
 
 clusterGroup:
-  storageClass: gp2
+  storageClass: gp3-csi
 
 #Define the odf storageSystem parameters
 storageSystem:

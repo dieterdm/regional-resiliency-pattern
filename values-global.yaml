@@ -43,7 +43,7 @@ regionalDR:
     clusters: # Pair of clusters, make sure to create each in a different region
       primary:
         name: ocp-primary
-        version: 4.16.5
+        version: 4.16.8
         # See OpenShift documentation for install config spec
         # https://docs.openshift.com/container-platform/4.14/installing/installing_aws/installing-aws-customizations.html
         install_config:
@@ -87,7 +87,7 @@ regionalDR:
           pullSecret: ""
       secondary:
         name: ocp-secondary
-        version: 4.16.5
+        version: 4.16.8
         install_config:
           apiVersion: v1
           metadata:
